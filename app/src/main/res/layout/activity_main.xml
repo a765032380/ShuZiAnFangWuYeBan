@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bjxiyang.shuzianfangwuyeban.activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentTop="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:id="@+id/ll_daiban"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_daiban"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/a_icon_daiban_pre" />
+
+            <TextView
+                android:id="@+id/tv_daiban"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="待办"
+                android:textColor="@color/blue"
+                android:textSize="9sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_gongzuo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_gongzuo"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/a_icon_gongzuo" />
+
+            <TextView
+                android:id="@+id/tv_gongzuo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="工作"
+                android:textColor="@color/color90"
+                android:textSize="9sp"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_mine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+           android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">            
+     
+        <ImageView
+            android:id="@+id/iv_mine"
+            android:text="我的"
+            android:layout_width="21dp"
+            android:layout_height="21dp"
+            android:background="@drawable/a_icon_wode"/>
+
+            <TextView
+                android:id="@+id/tv_mine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="我的"
+                android:textColor="@color/color90"
+                android:textSize="9sp"></TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:layout_gravity="right"
+    android:id="@+id/right_activity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFFFFF"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="筛选缴费"
+            android:textColor="#323232"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="小区"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp"/>
+            <LinearLayout
+                android:id="@+id/ll_xiaoqu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/conners_5dp_f1f1f1"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_xiaoqu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="春天华府" 
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/a_btn_jinru" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="楼号"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_louhao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/conners_5dp_f1f1f1"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_louhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/a_btn_jinru" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="单元"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_danyuan"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/conners_5dp_f1f1f1"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_danyuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/a_btn_jinru" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="房号"
+                android:textColor="#646464"
+                android:textSize="14sp"
+                android:layout_marginTop="30dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_fanghao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/conners_5dp_f1f1f1"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_fanghao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1003"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/a_btn_jinru" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:layout_marginTop="50dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tv_chongzhi"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="49dp"
+                    android:background="@drawable/b_a_a_btn_cheng"
+                    android:gravity="center"
+                    android:text="重置"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tv_queding"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="49dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/b_a_a_btn_lan"
+                    android:gravity="center"
+                    android:text="确定"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

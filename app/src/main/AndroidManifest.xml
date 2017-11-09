@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bjxiyang.shuzianfangwuyeban">
+    <!-- 微信支付-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:name=".app.GuardApplication"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.bjxiyang.shuzianfangwuyeban.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.SDLogin2Activity">
+        </activity>
+        <activity
+            android:name=".activity.SDLoginActivity">
+
+        </activity>
+
+
+
+
+        <activity
+            android:name=".activity.MyXinXiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.SheZhiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.ZhangHuAnQuanActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.XinXiaoXiTongZhiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.GengGaiPhoneActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.GuanYuWoMenActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.FuWuTiaoKuanActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.YiJianFanKuiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.WuYeJiaoFeiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.JiaoFeiJiLuActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.ZhuHuXinXiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+
+        <activity
+            android:name=".activity.XiaoQuGongGaoActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.ZhuHuXinXiListActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.WuYeFanKuiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.WeiXiuFuWuActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+        <activity
+            android:name=".activity.BanBenXinXiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
+
+
+
+    </application>
+
+</manifest>

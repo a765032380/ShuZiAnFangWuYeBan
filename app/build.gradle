@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+android {
+    signingConfigs {
+        debug {
+            keyAlias 'zhishequ'
+            keyPassword '123456'
+            storeFile file("/Users/gll/Desktop/bjxiyang.jks")
+            storePassword '123456'
+        }
+        bjxiyang {
+            keyAlias 'zhishequ'
+            keyPassword '123456'
+            storeFile file('/Users/gll/Desktop/bjxiyang.jks')
+            storePassword '123456'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.example.gll.shuzianfangwuyeban"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile project(path: ':imoocsdk')
+    //注解框架
+    compile 'com.jakewharton:butterknife:8.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    //滑动返回的依赖
+    compile 'me.imid.swipebacklayout.lib:library:1.0.0'
+    //recyclerview
+    compile 'com.android.support:recyclerview-v7:26.+'
+    //微信支付微信分享的依赖
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:0.0.4'
+    compile 'com.carson_ho:SearchLayout:1.0.1'
+    compile project(path: ':myapplication')
+    //鲁班的依赖，用于图片压缩
+    compile 'top.zibin:Luban:1.1.2'
+    //pagerslidingtabstrip的依赖
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+}

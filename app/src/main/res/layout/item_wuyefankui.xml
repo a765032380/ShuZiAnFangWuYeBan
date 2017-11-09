@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_month"
+        android:background="#f1f1f1"
+        android:paddingLeft="15dp"
+        android:textSize="15sp"
+        android:text="9月"
+        android:textColor="#323232"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:background="@drawable/b_d_icon_quan"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="2017.09.13  09:59"
+            android:textColor="#323232" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_neirong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:text="小区一到收费的时候可积极了,办事儿从来没有见过这么勤快过,看看这设施,都坏了,去找他们也不管,我就想问问,这是什么..."
+        android:textSize="15sp" />
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <ImageView
+            android:id="@+id/iv_1"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:background="@drawable/a_icon_wode" />
+
+        <ImageView
+            android:id="@+id/iv_2"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/a_icon_wode" />
+
+        <ImageView
+            android:id="@+id/iv_3"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/a_icon_wode" />
+
+        <ImageView
+            android:id="@+id/iv_4"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/a_icon_wode" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="孙福生"
+                android:textColor="#323232"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_dizhi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="华彩国际 1期 3栋 三单元"
+                android:textColor="#323232"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_button"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/b_d_btn_dadianhua"
+            android:gravity="center"
+            android:text="打电话"
+            android:textColor="#ffffff" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
