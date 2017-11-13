@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -154,15 +155,46 @@ public class ViewHolder {
         return this;
     }
 
+    public ViewHolder setOnClickListener(int viewId, List<String> mList, View.OnClickListener listener)
+    {
+        ListView view = getView(viewId);
+        view.setAdapter(new MyBaseAdapter<String>(getConvertView().getContext(),
+                mList, R.layout.item_item_lishijiaofei) {
+            @Override
+            public void convert(ViewHolder helper, String item) {
+                helper.setText(R.id.tv_address,item);
+            }
+        });
+        return this;
+    }
+    public ViewHolder setOnClickListener(int viewId, View.OnClickListener listener)
+    {
+        TextView view = getView(viewId);
+        view.setOnClickListener(listener);
+        return this;
+    }
+
+    public ViewHolder setGoneView(int viewId, int visibility)
+    {
+        LinearLayout view = getView(viewId);
+        view.setVisibility(visibility);
+        return this;
+    }
 
 
 
-
-
-
-
-
-
+    public ViewHolder setBackgroundResource(int viewId, int resource)
+    {
+        TextView view = getView(viewId);
+        view.setBackgroundResource(resource);
+        return this;
+    }
+    public ViewHolder setTextColor(int viewId, int resource)
+    {
+        TextView view = getView(viewId);
+        view.setTextColor(resource);
+        return this;
+    }
 
 
 }

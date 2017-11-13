@@ -7,9 +7,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baisi.imoocsdk.imageloader.ImageLoaderManager;
 import com.bjxiyang.shuzianfangwuyeban.R;
 import com.bjxiyang.shuzianfangwuyeban.activity.MyXinXiActivity;
 import com.bjxiyang.shuzianfangwuyeban.activity.SheZhiActivity;
+import com.bjxiyang.shuzianfangwuyeban.manager.SPManager;
 import com.bjxiyang.shuzianfangwuyeban.util.WechatShareUtil;
 import com.bjxiyang.shuzianfangwuyeban.view.CircleImageView;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
@@ -27,8 +29,6 @@ import butterknife.OnClick;
  */
 
 public class GeRenFragment extends BaseFragment implements View.OnClickListener {
-    @BindView(R.id.tv_wuyeID)
-    TextView tv_wuyeID;
     @BindView(R.id.tv_name)
     TextView tv_name;
     @BindView(R.id.iv_touxiang)
@@ -39,6 +39,8 @@ public class GeRenFragment extends BaseFragment implements View.OnClickListener 
     LinearLayout ll_shezhi;
     @BindView(R.id.ll_toxinxi)
     LinearLayout ll_toxinxi;
+    @BindView(R.id.tv_wuyename)
+    TextView tv_wuyename;
 
 
 
@@ -54,6 +56,7 @@ public class GeRenFragment extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this,view);
+        setData();
 
     }
 
@@ -107,6 +110,12 @@ public class GeRenFragment extends BaseFragment implements View.OnClickListener 
         iwxapi.sendReq(req);
     }
 
+    private void setData(){
+        ImageLoaderManager.getInstance(getContext())
+                .displayImage(iv_touxiang, SPManager.getInstance().getString("headPhoneUrl",""));
+        tv_name.setText(SPManager.getInstance().getString("leader","未设置用户名"));
+        tv_wuyename.setText(SPManager.getInstance().getString("propertyname",""));
+    }
 
 
 }

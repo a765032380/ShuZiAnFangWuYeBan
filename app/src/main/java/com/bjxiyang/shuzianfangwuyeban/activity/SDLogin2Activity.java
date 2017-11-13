@@ -54,7 +54,7 @@ public class SDLogin2Activity extends AppCompatActivity {
     private Button wx;
     Button loginMenutView;
 //    Button regiestMenutView;
-    LinearLayout loginView;
+LinearLayout loginView;
     LinearLayout regiestView;
 
     ImageView point_login;

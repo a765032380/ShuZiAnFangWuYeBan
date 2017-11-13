@@ -1,1 +1,1 @@
-include ':app', ':imoocsdk', ':myapplication'
+include ':app', ':imoocsdk', ':myapplication', ':pullToRefresh'

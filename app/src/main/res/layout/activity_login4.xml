@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:text="请输入手机号及验证码即可登录使用"
+                android:text="请输入手机号及密码即可登录使用"
                 android:textSize="13sp" />
 
             <TextView
@@ -53,25 +53,27 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:hint="请输入手机号"
-                    android:inputType="number"
                     android:maxLength="11"
                     android:singleLine="true"
                     android:textColor="#646464"
                     android:textCursorDrawable="@null"
                     android:textSize="16sp"
                     android:layout_weight="1"/>
+
                 <LinearLayout
                     android:id="@+id/il_deletephone"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:orientation="horizontal"
-                    android:gravity="center">
-                <ImageView
-                    android:id="@+id/iv_deletephone"
                     android:gravity="center"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:background="@drawable/d_btn_qingchu"/>
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
+
+                    <ImageView
+                        android:id="@+id/iv_deletephone"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/d_btn_qingchu"
+                        android:gravity="center" />
                 </LinearLayout>
             </LinearLayout>
             <View
@@ -108,8 +110,7 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:cursorVisible="true"
-                        android:hint="请输入验证码"
-                        android:inputType="number"
+                        android:hint="请输入密码"
                         android:singleLine="true"
                         android:textColor="#646464"
                         android:textCursorDrawable="@null"
@@ -117,7 +118,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:id="@+id/bt_get_smscode"
                     android:layout_width="95dp"
                     android:layout_height="40dp"
@@ -175,7 +176,8 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="或"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:visibility="invisible" />
 
             <Button
                 android:id="@+id/bt_weixindenglu"
@@ -184,7 +186,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/d_btn_weixin" />
+                android:background="@drawable/d_btn_weixin"
+                android:visibility="invisible" />
 
             <LinearLayout
                 android:id="@+id/ll_yonghuxieyi"

@@ -126,10 +126,13 @@ private void logOut(){
     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
-            SPManager.getInstance().remove("mobilePhone");
-            SPManager.getInstance().remove("communityId_one");
-            SPManager.getInstance().remove("c_memberId");
-            SPManager.getInstance().remove("test_men");
+            SPManager.getInstance().remove("PropertyId");
+            SPManager.getInstance().remove("propertyname");
+            SPManager.getInstance().remove("leader");
+            SPManager.getInstance().remove("tel");
+            SPManager.getInstance().remove("sex");
+            SPManager.getInstance().remove("birthday");
+            SPManager.getInstance().remove("headPhoneUrl");
 
         }
     });

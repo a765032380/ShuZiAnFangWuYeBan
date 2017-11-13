@@ -11,10 +11,16 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baisi.myapplication.okhttp.listener.DisposeDataListener;
 import com.bjxiyang.shuzianfangwuyeban.R;
 import com.bjxiyang.shuzianfangwuyeban.adapter.MyBaseAdapter;
 import com.bjxiyang.shuzianfangwuyeban.adapter.ViewHolder;
+import com.bjxiyang.shuzianfangwuyeban.api.URL;
+import com.bjxiyang.shuzianfangwuyeban.bean.ComplaintSelect;
+import com.bjxiyang.shuzianfangwuyeban.bean.OrderSelect;
 import com.bjxiyang.shuzianfangwuyeban.dialog.ListViewDialog;
+import com.bjxiyang.shuzianfangwuyeban.update.network.RequestCenter;
+import com.bjxiyang.shuzianfangwuyeban.util.CodeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -143,15 +149,8 @@ public class JiaoFeiJiLuActivity extends MySwipeBackActivity {
     @Override
     protected void initUI() {
         ButterKnife.bind(this);
-        MyBaseAdapter<String> adapter=new MyBaseAdapter<String>(this,getData(),R.layout.item_jiaofeijilu) {
-            @Override
-            public void convert(ViewHolder helper, String item) {
-                helper.setText(R.id.tv_address,item);
-                helper.setText(R.id.tv_date,item);
-                helper.setText(R.id.tv_jiaofeijine,item);
-            }
-        };
-        lv_jiaofeijilu.setAdapter(adapter);
+        getData1();
+
 
 
     }
@@ -165,4 +164,50 @@ public class JiaoFeiJiLuActivity extends MySwipeBackActivity {
 
         return mList;
     }
+
+    private void getData1(){
+        String url= URL.ORDER_OLD_SELECR
+                +"pageNum="+1
+                +"&pageSize=" +5
+                +"&communityId="
+                +"&nperId="
+                +"&floorId="
+                +"&unitId="
+                +"&doorId=";
+        RequestCenter.all(url, OrderSelect.class, new DisposeDataListener() {
+            @Override
+            public void onSuccess(Object responseObj) {
+                OrderSelect orderSelect = (OrderSelect) responseObj;
+                if (orderSelect.getCode()== CodeUtil.SUCCESS){
+                    MyBaseAdapter<OrderSelect.ObjBean.ListBean> adapter=
+                            new MyBaseAdapter<OrderSelect.ObjBean.ListBean>(
+                                    JiaoFeiJiLuActivity.this,
+                                    orderSelect.getObj().getList(),R.layout.item_jiaofeijilu) {
+                                @Override
+                                public void convert(ViewHolder helper, OrderSelect.ObjBean.ListBean item) {
+                                    helper.setText(R.id.tv_address,item.getCommunityName()+item.getNperName()
+                                            +item.getFloorName()+item.getUnitName()+item.getDoorName());
+                                    helper.setText(R.id.tv_date,item.getPayTime()+"");
+                                    helper.setText(R.id.tv_jiaofeijine,item.getRentMoney()+"");
+                                }
+
+                    };
+                    lv_jiaofeijilu.setAdapter(adapter);
+                }
+
+
+
+
+            }
+
+            @Override
+            public void onFailure(Object reasonObj) {
+
+            }
+        });
+    }
+
+
+
+
 }

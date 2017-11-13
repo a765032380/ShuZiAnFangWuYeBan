@@ -1,5 +1,6 @@
 package com.bjxiyang.shuzianfangwuyeban.activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
@@ -36,16 +37,13 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
 
     private int timeCount = 60;
     private Timer mtimer;
-    private boolean isOne=false;
-    private boolean isTwo=false;
+    private boolean isOne = false;
+    private boolean isTwo = false;
 
 
-
-
-
-    @OnClick({R.id.tv_changeTel_tijiao,R.id.tv_sendyanzhengma,R.id.rl_changeTel_fanhui})
+    @OnClick({R.id.tv_changeTel_tijiao, R.id.tv_sendyanzhengma, R.id.rl_changeTel_fanhui})
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             //提交的按键
             case R.id.tv_changeTel_tijiao:
                 tiJiao();
@@ -62,7 +60,7 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
 
     }
 
-    private void pandun(){
+    private void pandun() {
         et_newTel.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -71,15 +69,15 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()==11){
-                    isOne=true;
-                    if (isOne&&isTwo) {
+                if (charSequence.length() == 11) {
+                    isOne = true;
+                    if (isOne && isTwo) {
                         tv_changeTel_tijiao.setBackgroundResource(R.drawable.conners_5dp_2764ff);
                         tv_changeTel_tijiao.setEnabled(true);
                         tv_changeTel_tijiao.setTextColor(0xfff1f1f1);
                     }
-                }else {
-                    isOne=false;
+                } else {
+                    isOne = false;
                     tv_changeTel_tijiao.setTextColor(0xfff1f1f1);
                     tv_changeTel_tijiao.setBackgroundResource(R.drawable.conners_5dp_f1f1f1);
                     tv_changeTel_tijiao.setEnabled(false);
@@ -100,15 +98,15 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()==6){
-                    isTwo=true;
-                    if (isOne&&isTwo) {
+                if (charSequence.length() == 6) {
+                    isTwo = true;
+                    if (isOne && isTwo) {
                         tv_changeTel_tijiao.setBackgroundResource(R.drawable.conners_5dp_2764ff);
                         tv_changeTel_tijiao.setTextColor(0xfff1f1f1);
                         tv_changeTel_tijiao.setEnabled(true);
                     }
-                }else {
-                    isTwo=false;
+                } else {
+                    isTwo = false;
                     tv_changeTel_tijiao.setTextColor(0xfff1f1f1);
                     tv_changeTel_tijiao.setBackgroundResource(R.drawable.conners_5dp_f1f1f1);
                     tv_changeTel_tijiao.setEnabled(false);
@@ -122,20 +120,22 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
         });
 
 
-
     }
 
-    private void sendMSM(){
-        timeCount=60;
+    private void sendMSM() {
+        timeCount = 60;
         startCountdown();
 
     }
-    private void tiJiao(){
+
+    private void tiJiao() {
+        String phone = String.valueOf(tv_changeTel_tijiao.getText());
+        MyXinXiActivity.update(2,phone,this);
 
     }
 
     //倒计时的方法
-    public void setTimerTask(){
+    public void setTimerTask() {
         mtimer = new Timer();
         mtimer.schedule(new TimerTask() {
             @Override
@@ -144,17 +144,18 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
                 message.what = 1;
                 timerHandler.sendMessage(message);
             }
-        },1000,1000);
+        }, 1000, 1000);
     }
-    private Handler timerHandler = new Handler(){
+
+    private Handler timerHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.what == 1){
-                timeCount --;
-                if (timeCount >= 0){
+            if (msg.what == 1) {
+                timeCount--;
+                if (timeCount >= 0) {
                     changeSmsButton();
-                }else{
+                } else {
                     mtimer.cancel();
                     tv_sendyanzhengma.setEnabled(true);
                     tv_sendyanzhengma.setText(R.string.getsmsversion);
@@ -162,13 +163,15 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
             }
         }
     };
+
     //在倒计时的时候,对按钮上的字进行赋值
-    public void changeSmsButton(){
+    public void changeSmsButton() {
         tv_sendyanzhengma.setText(timeCount + "秒重发");
 
     }
+
     //开始倒计时
-    public void startCountdown(){
+    public void startCountdown() {
         changeSmsButton();
         tv_sendyanzhengma.setEnabled(false);
         setTimerTask();

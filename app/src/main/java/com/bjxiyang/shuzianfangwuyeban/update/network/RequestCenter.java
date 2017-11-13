@@ -6,6 +6,9 @@ import com.baisi.myapplication.okhttp.listener.DisposeDataListener;
 import com.baisi.myapplication.okhttp.listener.DisposeDownloadListener;
 import com.baisi.myapplication.okhttp.request.CommonRequest;
 import com.baisi.myapplication.okhttp.request.RequestParams;
+import com.bjxiyang.shuzianfangwuyeban.bean.Image;
+import com.bjxiyang.shuzianfangwuyeban.update.util.GetHeaders;
+
 import java.util.Map;
 
 /**
@@ -37,10 +40,9 @@ public class RequestCenter {
 //       CommonOkHttpClient.uploadImgAndParameter(map,url,new DisposeDataHandle(listener,FanHui.class));
 //    }
 //
-//    public static void uploadPictures2(String url,RequestParams params,DisposeDataListener listener){
-//        CommonOkHttpClient.uploadPictures2(
-//                CommonRequest.createMultiPostRequest(url,params),new DisposeDataHandle(listener,FanHui.class));
-//    }
+    public static void uploadPictures2(String url,Map<String, Object>  map,DisposeDataListener listener){
+        CommonRequest.uploadImgAndParameter(map,url,new DisposeDataHandle(listener,Image.class));
+    }
     public static void cancel(){
         CommonOkHttpClient.breakLink();
     }
@@ -87,12 +89,20 @@ public class RequestCenter {
 //    }
 //
 //
-
+public static void login(String url,Class mClass,DisposeDataListener listener){
+    RequestCenter.postRequest(url,null,listener, mClass);
+}
 
     public static void all(String url,Class mClass,DisposeDataListener listener){
-        RequestCenter.postRequest(url,null,listener, mClass);
+        RequestCenter.postRequest1(url, null,GetHeaders.getHeaders(),listener, mClass);
     }
+
+//    public static void all(String url,Class mClass,DisposeDataListener listener){
+//        RequestCenter.getRequest1(url,null,null,listener, mClass);
+//    }
+
+
     public static void all(String url,RequestParams params,Class mClass,DisposeDataListener listener){
-        RequestCenter.postRequest(url,params,listener, mClass);
+        RequestCenter.postRequest1(url,params,GetHeaders.getHeaders(),listener, mClass);
     }
 }

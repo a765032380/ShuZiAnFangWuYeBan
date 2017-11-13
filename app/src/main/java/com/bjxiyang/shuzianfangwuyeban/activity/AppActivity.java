@@ -15,6 +15,7 @@ import com.bjxiyang.shuzianfangwuyeban.fragment_main.BaseFragment;
 import com.bjxiyang.shuzianfangwuyeban.fragment_main.DaiBanFragment;
 import com.bjxiyang.shuzianfangwuyeban.fragment_main.GeRenFragment;
 import com.bjxiyang.shuzianfangwuyeban.fragment_main.GongZuoFragment;
+import com.bjxiyang.shuzianfangwuyeban.manager.SPManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +62,10 @@ public abstract class AppActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewId());
         appActivity=this;
+
+
+
+
         ButterKnife.bind(this);
         if (null != getIntent()) {
             handleIntent(getIntent());

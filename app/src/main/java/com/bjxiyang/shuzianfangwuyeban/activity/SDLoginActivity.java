@@ -22,9 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baisi.myapplication.adutil.APP_ID;
+import com.baisi.myapplication.okhttp.listener.DisposeDataListener;
 import com.baisi.myapplication.okhttp.request.RequestParams;
 import com.bjxiyang.shuzianfangwuyeban.R;
+import com.bjxiyang.shuzianfangwuyeban.api.URL;
+import com.bjxiyang.shuzianfangwuyeban.bean.Login;
 import com.bjxiyang.shuzianfangwuyeban.manager.SPManager;
+import com.bjxiyang.shuzianfangwuyeban.update.network.RequestCenter;
+import com.bjxiyang.shuzianfangwuyeban.util.CodeUtil;
 import com.bjxiyang.shuzianfangwuyeban.util.DialogUntil;
 import com.bjxiyang.shuzianfangwuyeban.util.MyUntil;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -127,9 +132,9 @@ public class SDLoginActivity extends AppCompatActivity {
 //        }
 
         //判断有没有用户的信息,如果有,直接跳转到主界面
-        if (SPManager.getInstance().getString("mobilePhone",null)!=null){
+        if (SPManager.getInstance().getInt("PropertyId",-1)!=-1){
             //将得到的用户信息保存到实体类中
-            Intent intent = new Intent(SDLoginActivity.this, AppActivity.class);
+            Intent intent = new Intent(SDLoginActivity.this, MainActivity.class);
             startActivity(intent);
             //关闭当前页面
 
@@ -263,10 +268,10 @@ public class SDLoginActivity extends AppCompatActivity {
 //                        Toast.makeText(SDLoginActivity.this,"输入格式没问题",Toast.LENGTH_LONG).show();
 //                        String url= XY_Response.URL_LOGIN+"mobilePhone="+uPhone+"&password="+uPassword;
                 //判断用户输入的手机号是否正确
-                if (!isMobilephone(uPhone)) {
-                    Toast.makeText(SDLoginActivity.this,"请输入正确的手机号", Toast.LENGTH_LONG).show();
-                    return;
-                }
+//                if (!isMobilephone(uPhone)) {
+//                    Toast.makeText(SDLoginActivity.this,"请输入正确的手机号", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
                 //判断用户输入的密码格式是否正确
 //                if (!rexCheckPassword(uPassword)){
 //                    Toast.makeText(SDLoginActivity.this,"请输入8~16位密码,密码必须包含字母和数字",Toast.LENGTH_LONG).show();
@@ -275,79 +280,27 @@ public class SDLoginActivity extends AppCompatActivity {
                 //弹出正在登陆的等待动画
                 DialogUntil.showLoadingDialog(SDLoginActivity.this,"正在登陆",true);
                 //拼接访问的URL
-//                String url=XY_Response.URL_LOGIN
-//                        +"mobilePhone="
-//                        +uPhone+"&dynamic="
-//                        +uPassword;
-////                        +"&deviceId="+ "";
-////                YZTEsdk.getXulie(SDLoginActivity.this)
-//                RequestParams headers=new RequestParams();
-//                headers.put("user-agent", ""+"appId="+ APP_ID.APP_ID+"");
-//
-//
-//
-//
-//                RequestCenter.login(url,headers, new DisposeDataListener() {
-//                    @Override
-//                    public void onSuccess(Object responseObj) {
-//                        //访问成功清除Dialog
-//                        DialogUntil.closeLoadingDialog();
-//                        //得到返回数据并保存到实体类中
-//                        Users users= (Users) responseObj;
-//                        //如果返回码为1000,说明登陆成功
-//                        if (users.getCode()==1000){
-//                            //登陆成功以后将用户的实体类保存到单例模式下的用户实体类中
-//                            UserManager.getInstance().setUser(users);
-////                            if (check_out.isSelected()){
-//                                //将用户的信息报错到SP中
-//                                setSP(users);
-////                            }
-////                            MyUntil.show(SDLoginActivity.this,"登陆成功");
-//                            //登陆成功后跳转到主页面
-//                            Intent intent=new Intent(SDLoginActivity.this,HomeActivity.class);
-//                            startActivity(intent);
-//                            finish();
-//                            //如果返回码是200,说明登陆有误
-//                        }else {
-//                            //弹出用户登陆的错误信息
-//                            Toast.makeText(SDLoginActivity.this,
-//                                    users.getMsg(), Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                    @Override
-//                    public void onFailure(Object reasonObj) {
-//                        //网络访问失败也要清除Dialog
-//                        DialogUntil.closeLoadingDialog();
-//                        //弹出请用户检查网络的Dialog
-//                        MyDialog.showDialog(SDLoginActivity.this,"请检查网络连接");
-//                    }
-//                });
-//                    }else {
-//                        Toast.makeText(SDLoginActivity.this,"输入格式有问题",Toast.LENGTH_LONG).show();
-//                    }
-//                if (uPhone!=null&&uPassword!=null&&!uPhone.equals("")&&!uPassword.equals("")){
-                    //向服务器发送请求获取返回值,请求的时候带用户名和密码进行验证
-                    //在向服务器发送请求和接收服务器返回值的过程中,可加一个小动画
-                    //这里还要加一个判断
+                String url= URL.LOGIN
+                        +"username="
+                        +uPhone+"&password="
+                        +uPassword;
+                RequestCenter.login(url, Login.class, new DisposeDataListener() {
+                    @Override
+                    public void onSuccess(Object responseObj) {
+                        Login login= (Login) responseObj;
+                        if (login.getCode()==CodeUtil.SUCCESS){
+                            setData(login);
+                            Intent intent=new Intent(SDLoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                        }
 
+                    }
 
+                    @Override
+                    public void onFailure(Object reasonObj) {
 
-
-//
-//                    //判断用户有没有选择记住密码
-//                    if (check_out.isSelected()){
-////                        Toast.makeText(SDLoginActivity.this,String.valueOf(check_out),
-////                                Toast.LENGTH_SHORT).show();
-//                        SPManager.getInstance().putString("phone",uPhone);
-//                        SPManager.getInstance().putString("password",uPassword);
-//                    }
-                    //以单例模式保存用户的信息,可以在任何页面直接得到用户信息
-                    //目前只保存了用户名,正常来说,应该保存从服务器得到的所有信息
-
-//                }else {
-                    //向用户显示提示
-//                    Toast.makeText(SDLoginActivity.this,"用户名或密码不能为空",Toast.LENGTH_SHORT).show();
-//                }
+                    }
+                });
 
             }
         });
@@ -356,6 +309,27 @@ public class SDLoginActivity extends AppCompatActivity {
         input_user_sms_code_editview = (EditText) findViewById(R.id.et_reg_smscode) ;
 
     }
+    private void setData(Login login){
+        if (login.getObj().size()>0){
+            SPManager.getInstance().putInt("PropertyId", Integer.parseInt(login.getObj().get(0).getPropertyId()));
+            SPManager.getInstance().putString("propertyname",login.getObj().get(0).getPropertyName());
+            SPManager.getInstance().putString("leader",login.getObj().get(0).getLeader());
+            SPManager.getInstance().putString("tel",login.getObj().get(0).getTel());
+//            SPManager.getInstance().putString("address",login.getObj().get(0).getAddress());
+//            SPManager.getInstance().putString("nperid",login.getObj().get(0).getNperid());
+//            SPManager.getInstance().putString("note",login.getObj().get(0).getNote());
+//            SPManager.getInstance().putString("unitid",login.getObj().get(0).getUnitid());
+//            SPManager.getInstance().putString("communityid",login.getObj().get(0).getCommunityid());
+//            SPManager.getInstance().putString("floorid",login.getObj().get(0).getFloorid());
+//            SPManager.getInstance().putString("doorid",login.getObj().get(0).getDoorid());
+            SPManager.getInstance().putString("sex",login.getObj().get(0).getSex());
+            SPManager.getInstance().putString("birthday",login.getObj().get(0).getBirthday());
+            SPManager.getInstance().putString("headPhoneUrl",login.getObj().get(0).getHeadPhoneUrl());
+            SPManager.getInstance().putString("loginKey",login.getObj().get(0).getPrivate_token());
+        }
+    }
+
+
 
     //倒计时的方法
     public void setTimerTask(){

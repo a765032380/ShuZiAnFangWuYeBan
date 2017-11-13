@@ -7,6 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bjxiyang.shuzianfangwuyeban.R;
+import com.bjxiyang.shuzianfangwuyeban.manager.SPManager;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -91,7 +92,16 @@ public class ZhangHuAnQuanActivity extends MySwipeBackActivity implements View.O
     @Override
     protected void initUI() {
         ButterKnife.bind(this);
+        setData();
     }
+    private void setData(){
+        tv_safe_dinahua.setText(SPManager.getInstance().getString("tel","未绑定"));
+
+
+
+    }
+
+
 
 
 }

@@ -13,13 +13,14 @@
 
 
         <ImageView
+
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginLeft="20dp"
             android:background="@drawable/a_icon_biaoji" />
 
         <TextView
-            android:id="@+id/tv_wuyeID"
+            android:id="@+id/tv_wuyename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

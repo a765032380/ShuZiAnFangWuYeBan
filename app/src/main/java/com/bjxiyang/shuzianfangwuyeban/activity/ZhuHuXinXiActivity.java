@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bjxiyang.shuzianfangwuyeban.R;
+import com.bjxiyang.shuzianfangwuyeban.api.URL;
 import com.bjxiyang.shuzianfangwuyeban.dialog.ListViewDialog;
 import com.bjxiyang.shuzianfangwuyeban.testutil.TestUtil;
 
@@ -142,4 +143,12 @@ public class ZhuHuXinXiActivity extends MySwipeBackActivity {
         ButterKnife.bind(this);
 
     }
+    private void getData(){
+        String url= URL.FINDCOMMUNITY_BYPROPERID
+                +"";
+    }
+
+
+
+
 }

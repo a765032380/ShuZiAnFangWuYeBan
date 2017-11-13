@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.neenbedankt.android-apt'
 android {
     signingConfigs {
@@ -58,4 +59,9 @@ dependencies {
     compile 'top.zibin:Luban:1.1.2'
     //pagerslidingtabstrip的依赖
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile project(path: ':pullToRefresh')
+}
+repositories {
+    mavenCentral()
 }
