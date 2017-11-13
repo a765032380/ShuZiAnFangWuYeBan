@@ -467,7 +467,7 @@ LinearLayout loginView;
     private void getIMEI(){
         TelephonyManager telephonyManager=(TelephonyManager)
                 this.getSystemService(Context.TELEPHONY_SERVICE);
-        APP_ID.APP_ID =telephonyManager.getDeviceId();
+//        APP_ID.APP_ID =telephonyManager.getDeviceId();
 
     }
     public void getQuanxian() {
