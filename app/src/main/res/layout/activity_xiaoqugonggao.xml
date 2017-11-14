@@ -64,15 +64,50 @@
                 </RelativeLayout>
             </RelativeLayout>
 
+           
+
+            <LinearLayout
+                android:id="@+id/ll_selete"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/c_icon_zi" />
+
+                <TextView
+                    android:id="@+id/tv_louhao_xiaoqu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="请选择所要反馈的物业"
+                    android:textColor="#323232"
+                    android:layout_marginLeft="10dp"/>
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/a_btn_jinru" />
+            </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#f1f1f1"></View>
-
+                android:background="#f1f1f1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"></View>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -85,7 +120,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:layout_marginTop="20dp"
                         android:text="标题"
                         android:textColor="#323232"
                         android:textSize="15sp" />
@@ -150,7 +184,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="49dp"
                         android:layout_marginBottom="20dp"
-                        android:layout_marginTop="100dp"
+                        android:layout_marginTop="50dp"
                         android:background="@drawable/b_c_btn_lan"
                         android:gravity="center"
                         android:text="提交"

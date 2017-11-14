@@ -11,7 +11,7 @@ public class ComplaintSelect {
     /**
      * code : 0
      * msg : 成功
-     * obj : {"pageNum":1,"pageSize":5,"size":5,"startRow":1,"endRow":5,"total":33,"pages":7,"list":[{"complaint_id":9,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":null,"create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":9,"pic_url":"1508983013783.jpg"}]},{"complaint_id":39,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":39,"pic_url":null}]},{"complaint_id":25,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":25,"pic_url":null}]},{"complaint_id":18,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":18,"pic_url":null}]},{"complaint_id":31,"property_id":7,"community_id":8,"cmember_id":267,"complaint_type":0,"content":"呵呵","contact_way":"","create_time":"2017-10-26 09:55:08","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":31,"pic_url":null}]}],"firstPage":1,"prePage":0,"nextPage":2,"lastPage":7,"isFirstPage":true,"isLastPage":false,"hasPreviousPage":false,"hasNextPage":true,"navigatePages":8,"navigatepageNums":[1,2,3,4,5,6,7]}
+     * obj : {"pageNum":1,"pageSize":5,"size":4,"startRow":1,"endRow":4,"total":45,"pages":9,"list":[{"complaint_id":9,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":9,"pic_url":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=533534239,3418928059&fm=27&gp=0.jpg"}]},{"complaint_id":39,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":39,"pic_url":null}]},{"complaint_id":25,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":25,"pic_url":null}]},{"complaint_id":18,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":18,"pic_url":null}]}],"firstPage":1,"prePage":0,"nextPage":2,"lastPage":8,"isFirstPage":true,"isLastPage":false,"hasPreviousPage":false,"hasNextPage":true,"navigatePages":8,"navigatepageNums":[1,2,3,4,5,6,7,8]}
      * type : null
      */
 
@@ -56,22 +56,22 @@ public class ComplaintSelect {
         /**
          * pageNum : 1
          * pageSize : 5
-         * size : 5
+         * size : 4
          * startRow : 1
-         * endRow : 5
-         * total : 33
-         * pages : 7
-         * list : [{"complaint_id":9,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":null,"create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":9,"pic_url":"1508983013783.jpg"}]},{"complaint_id":39,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":39,"pic_url":null}]},{"complaint_id":25,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":25,"pic_url":null}]},{"complaint_id":18,"property_id":3,"community_id":4,"cmember_id":267,"complaint_type":0,"content":"感觉","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":18,"pic_url":null}]},{"complaint_id":31,"property_id":7,"community_id":8,"cmember_id":267,"complaint_type":0,"content":"呵呵","contact_way":"","create_time":"2017-10-26 09:55:08","reply_content":null,"reply_userId":null,"reply_time":null,"propertyName":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":31,"pic_url":null}]}]
+         * endRow : 4
+         * total : 45
+         * pages : 9
+         * list : [{"complaint_id":9,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":9,"pic_url":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=533534239,3418928059&fm=27&gp=0.jpg"}]},{"complaint_id":39,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":39,"pic_url":null}]},{"complaint_id":25,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":25,"pic_url":null}]},{"complaint_id":18,"property_id":3,"community_id":4,"cmember_id":268,"complaint_type":0,"content":"制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。","contact_way":"","create_time":"2017-10-26 09:57:00","reply_content":null,"reply_userId":null,"reply_time":null,"mobilePhone":"18813045215","propertyName":null,"complaint_status":null,"communityName":null,"pic_url":[{"pic_id":null,"complaint_id":18,"pic_url":null}]}]
          * firstPage : 1
          * prePage : 0
          * nextPage : 2
-         * lastPage : 7
+         * lastPage : 8
          * isFirstPage : true
          * isLastPage : false
          * hasPreviousPage : false
          * hasNextPage : true
          * navigatePages : 8
-         * navigatepageNums : [1,2,3,4,5,6,7]
+         * navigatepageNums : [1,2,3,4,5,6,7,8]
          */
 
         private int pageNum;
@@ -242,17 +242,19 @@ public class ComplaintSelect {
              * complaint_id : 9
              * property_id : 3
              * community_id : 4
-             * cmember_id : 267
+             * cmember_id : 268
              * complaint_type : 0
-             * content : 感觉
-             * contact_way : null
+             * content : 制服诱惑：制服诱惑是两性游戏中经常使用的行为，通过各种制服来扮演成各种各样的角色，以实现心理和生理上的双重刺激。制服诱惑主要是通过角色扮演来实现，各种角色的制服体现出不同的制服诱惑。同一个人不通的制服，表达出完全不一样的制服诱惑。
+             * contact_way :
              * create_time : 2017-10-26 09:57:00
              * reply_content : null
              * reply_userId : null
              * reply_time : null
+             * mobilePhone : 18813045215
              * propertyName : null
+             * complaint_status : null
              * communityName : null
-             * pic_url : [{"pic_id":null,"complaint_id":9,"pic_url":"1508983013783.jpg"}]
+             * pic_url : [{"pic_id":null,"complaint_id":9,"pic_url":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=533534239,3418928059&fm=27&gp=0.jpg"}]
              */
 
             private int complaint_id;
@@ -261,12 +263,14 @@ public class ComplaintSelect {
             private int cmember_id;
             private int complaint_type;
             private String content;
-            private Object contact_way;
+            private String contact_way;
             private String create_time;
             private Object reply_content;
             private Object reply_userId;
             private Object reply_time;
+            private String mobilePhone;
             private Object propertyName;
+            private Object complaint_status;
             private Object communityName;
             private List<PicUrlBean> pic_url;
 
@@ -318,11 +322,11 @@ public class ComplaintSelect {
                 this.content = content;
             }
 
-            public Object getContact_way() {
+            public String getContact_way() {
                 return contact_way;
             }
 
-            public void setContact_way(Object contact_way) {
+            public void setContact_way(String contact_way) {
                 this.contact_way = contact_way;
             }
 
@@ -358,12 +362,28 @@ public class ComplaintSelect {
                 this.reply_time = reply_time;
             }
 
+            public String getMobilePhone() {
+                return mobilePhone;
+            }
+
+            public void setMobilePhone(String mobilePhone) {
+                this.mobilePhone = mobilePhone;
+            }
+
             public Object getPropertyName() {
                 return propertyName;
             }
 
             public void setPropertyName(Object propertyName) {
                 this.propertyName = propertyName;
+            }
+
+            public Object getComplaint_status() {
+                return complaint_status;
+            }
+
+            public void setComplaint_status(Object complaint_status) {
+                this.complaint_status = complaint_status;
             }
 
             public Object getCommunityName() {
@@ -386,7 +406,7 @@ public class ComplaintSelect {
                 /**
                  * pic_id : null
                  * complaint_id : 9
-                 * pic_url : 1508983013783.jpg
+                 * pic_url : https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=533534239,3418928059&fm=27&gp=0.jpg
                  */
 
                 private Object pic_id;

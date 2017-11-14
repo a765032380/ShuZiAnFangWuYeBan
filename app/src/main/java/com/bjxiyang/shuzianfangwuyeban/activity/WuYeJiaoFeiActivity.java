@@ -36,6 +36,7 @@ public class WuYeJiaoFeiActivity extends MySwipeBackActivity implements View.OnC
                 break;
             //创建缴费
             case R.id.ll_chuanjianjiaofei:
+                startActivity(ChuangJianJiaoFeiActivity.class);
                 break;
         }
 

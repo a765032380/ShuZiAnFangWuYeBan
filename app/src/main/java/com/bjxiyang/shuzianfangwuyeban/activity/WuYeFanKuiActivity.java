@@ -1,5 +1,7 @@
 package com.bjxiyang.shuzianfangwuyeban.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -56,7 +58,7 @@ public class WuYeFanKuiActivity extends MySwipeBackActivity {
     private void getData(){
         String url= URL.COMPLAINT_SELECT
                 +"pageNum="+1
-                +"&pageSize=" +5;
+                +"&pageSize=" +100;
         RequestCenter.all(url, ComplaintSelect.class, new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
@@ -65,10 +67,43 @@ public class WuYeFanKuiActivity extends MySwipeBackActivity {
                     adapter=new MyBaseAdapter<ComplaintSelect.ObjBean.ListBean>
                             (WuYeFanKuiActivity.this, complaintSelect.getObj().getList(),R.layout.item_wuyefankui) {
                         @Override
-                        public void convert(ViewHolder helper, ComplaintSelect.ObjBean.ListBean item) {
+                        public void convert(ViewHolder helper, final ComplaintSelect.ObjBean.ListBean item) {
+                            if (item.getPic_url().size()==0){
+                                helper.setGoneView(R.id.ll_image,View.GONE);
+                            }else {
+                                helper.setGoneView(R.id.ll_image,View.VISIBLE);
+                            }
+                            if (item.getPic_url().size()==1){
+                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
+                            }
+                            if (item.getPic_url().size()==2){
+                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
+                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
+                            }
+                            if (item.getPic_url().size()==3){
+                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
+                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
+                                helper.setImageByUrl(R.id.iv_3,item.getPic_url().get(2).getPic_url());
+                            }
+                            if (item.getPic_url().size()==4){
+                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
+                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
+                                helper.setImageByUrl(R.id.iv_3,item.getPic_url().get(2).getPic_url());
+                                helper.setImageByUrl(R.id.iv_4,item.getPic_url().get(3).getPic_url());
+                            }
+
+
                             helper.setText(R.id.tv_date,item.getCreate_time());
                             helper.setText(R.id.tv_neirong,item.getContent());
-//                            helper.setText(R.id.tv_name,item.get);
+                            helper.setText(R.id.tv_dizhi,item.getCommunityName()+"");
+                            helper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+item.getMobilePhone()));
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                }
+                            });
 //                            helper.setText(R.id.tv_dizhi,item.getCommunityName()+item.getNperName()
 //                                    +item.getFloorName()+item.getUnitName()+item.getDoorName());
 

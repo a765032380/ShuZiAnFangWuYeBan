@@ -111,7 +111,10 @@
             android:name=".activity.XiuGaiNameActivity"
             android:theme="@style/otherPageStyle">
         </activity>
-
+        <activity
+            android:name=".activity.ChuangJianJiaoFeiActivity"
+            android:theme="@style/otherPageStyle">
+        </activity>
 
     </application>
 

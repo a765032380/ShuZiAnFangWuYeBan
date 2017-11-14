@@ -43,6 +43,7 @@
             android:layout_alignParentTop="true">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|right"
@@ -89,6 +90,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -98,37 +100,92 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="20dp"
-                android:text="小区"
-                android:textColor="#646464"
-                android:textSize="14sp" />
-
             <LinearLayout
-                android:id="@+id/ll_xiaoqu"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/conners_5dp_f1f1f1"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_xiaoqu"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:text="春天华府" />
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="8dp"
-                    android:layout_height="15dp"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        android:text="小区"
+                        android:textColor="#646464"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_xiaoqu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/conners_5dp_f1f1f1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <TextView
+                            android:id="@+id/tv_xiaoqu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="请选择" />
+
+                        <ImageView
+                            android:layout_width="8dp"
+                            android:layout_height="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/a_btn_jinru" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/a_btn_jinru" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        android:text="期数"
+                        android:textColor="#646464"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_qishu"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/conners_5dp_f1f1f1"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <TextView
+                            android:id="@+id/tv_qishu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="请选择" />
+
+                        <ImageView
+                            android:layout_width="8dp"
+                            android:layout_height="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/a_btn_jinru" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -155,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="业主" />
+                    android:text="请选择" />
 
                 <ImageView
                     android:layout_width="8dp"
@@ -163,28 +220,32 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/a_btn_jinru" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"
+                    android:layout_weight="1"
                     android:text="楼号"
                     android:textColor="#646464"
                     android:textSize="14sp" />
+
                 <View
-                    android:layout_weight="0.14"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.14" />
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="20dp"
+                    android:layout_weight="1"
                     android:text="单元"
                     android:textColor="#646464"
                     android:textSize="14sp" />
@@ -192,14 +253,15 @@
 
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp">
+
                 <LinearLayout
                     android:id="@+id/ll_louhao"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="50dp"
+                    android:layout_weight="1"
                     android:background="@drawable/conners_5dp_f1f1f1"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
@@ -210,7 +272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="8" />
+                        android:text="请选择" />
 
                     <ImageView
                         android:layout_width="8dp"
@@ -218,15 +280,17 @@
                         android:layout_marginLeft="10dp"
                         android:background="@drawable/a_btn_jinru" />
                 </LinearLayout>
+
                 <View
-                    android:layout_weight="0.14"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"/>
+                    android:layout_height="50dp"
+                    android:layout_weight="0.14" />
+
                 <LinearLayout
                     android:id="@+id/ll_danyuan"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="50dp"
+                    android:layout_weight="1"
                     android:background="@drawable/conners_5dp_f1f1f1"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
@@ -237,7 +301,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="8" />
+                        android:text="请选择" />
 
                     <ImageView
                         android:layout_width="8dp"
@@ -246,8 +310,6 @@
                         android:background="@drawable/a_btn_jinru" />
                 </LinearLayout>
             </LinearLayout>
-
-
 
 
             <TextView
@@ -274,7 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1003" />
+                    android:text="请选择" />
 
                 <ImageView
                     android:layout_width="8dp"

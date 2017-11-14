@@ -25,6 +25,8 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
     private static ListViewDialog mListViewDialog;
     private static List<String> mList;
     private static OnSelectItem onSelectItem;
+    private static OnSelectItemAndI onSelectItemAndI;
+
 
     public ListViewDialog(@NonNull Context context) {
 
@@ -63,10 +65,24 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
         onSelectItem=listener;
         mListViewDialog.show();
     }
+    public static void showListDialog(Context context,List<String> list,OnSelectItemAndI listener){
+        new ListViewDialog(context);
+        mList=list;
+        onSelectItemAndI=listener;
+        mListViewDialog.show();
+    }
+
+
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        onSelectItem.onSelectItem(mList.get(i));
+        if (onSelectItem!=null){
+            onSelectItem.onSelectItem(mList.get(i));
+        }
+        if (onSelectItemAndI!=null){
+            onSelectItemAndI.onSelectItem(mList.get(i),i);
+        }
+
         mListViewDialog.cancel();
 
     }
@@ -75,5 +91,7 @@ public class ListViewDialog extends Dialog implements AdapterView.OnItemClickLis
         public void onSelectItem(String item);
     }
 
-
+    public interface OnSelectItemAndI{
+        public void onSelectItem(String item,int i);
+    }
 }

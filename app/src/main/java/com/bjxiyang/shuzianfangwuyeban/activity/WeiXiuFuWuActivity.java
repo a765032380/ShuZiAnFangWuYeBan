@@ -28,6 +28,8 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
     @BindView(R.id.lv_weixiufuwu)
     ListView lv_weixiufuwu;
 
+
+
     private MyBaseAdapter<Repairlist.ObjBean.ListBean> adapter;
 
 
@@ -55,7 +57,7 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
     private void getData(){
         String url= URL.REPAIRLIST
                 +"pageNum="+1
-                +"&pageSize=" +5
+                +"&pageSize=" +100
                 +"&search=";
         RequestCenter.all(url, Repairlist.class, new DisposeDataListener() {
             @Override
@@ -66,47 +68,50 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
                     adapter=new MyBaseAdapter<Repairlist.ObjBean.ListBean>(
                             WeiXiuFuWuActivity.this, repairlist.getObj().getList(),R.layout.item_weixiufuwu) {
                         @Override
-                        public void convert(ViewHolder helper, final Repairlist.ObjBean.ListBean item) {
-                            helper.setText(R.id.tv_date,item.getAdd_time());
-                            helper.setText(R.id.tv_neirong,item.getContact_way());
-                            helper.setText(R.id.tv_name,item.getRepair_name());
-                            helper.setText(R.id.tv_dizhi,item.getCommunityName()+item.getNperName()
-                            +item.getFloorName()+item.getUnitName()+item.getDoorName());
-                            helper.setText(R.id.tv_dingdanhao,"单号："+item.getRepair_no());
-                            if (item.getPic_url().size()==0){
-                                helper.setGoneView(R.id.ll_image,View.GONE);
+                        public void convert(ViewHolder helper, Repairlist.ObjBean.ListBean item) {
+                            final  ViewHolder mHelper=helper;
+                            final Repairlist.ObjBean.ListBean   mItem=item;
+                            mHelper.setText(R.id.tv_date,mItem.getAdd_time());
+                            mHelper.setText(R.id.tv_neirong,mItem.getContact_way());
+                            mHelper.setText(R.id.tv_name,mItem.getRepair_name());
+                            mHelper.setText(R.id.tv_dizhi,mItem.getCommunityName()+mItem.getNperName()
+                            +mItem.getFloorName()+mItem.getUnitName()+mItem.getDoorName());
+                            mHelper.setText(R.id.tv_dingdanhao,"单号："+mItem.getRepair_no());
+                            if (mItem.getPic_url().size()==0){
+                                mHelper.setGoneView(R.id.ll_image,View.GONE);
                             }else {
-                                helper.setGoneView(R.id.ll_image,View.VISIBLE);
+                                mHelper.setGoneView(R.id.ll_image,View.VISIBLE);
                             }
-                            if (item.getPic_url().size()==1){
-                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
+                            if (mItem.getPic_url().size()==1){
+                                mHelper.setImageByUrl(R.id.iv_1,mItem.getPic_url().get(0).getPic_url());
                             }
-                            if (item.getPic_url().size()==2){
-                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
-                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
+                            if (mItem.getPic_url().size()==2){
+                                mHelper.setImageByUrl(R.id.iv_1,mItem.getPic_url().get(0).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_2,mItem.getPic_url().get(1).getPic_url());
                             }
-                            if (item.getPic_url().size()==3){
-                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
-                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
-                                helper.setImageByUrl(R.id.iv_3,item.getPic_url().get(2).getPic_url());
+                            if (mItem.getPic_url().size()==3){
+                                mHelper.setImageByUrl(R.id.iv_1,mItem.getPic_url().get(0).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_2,mItem.getPic_url().get(1).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_3,mItem.getPic_url().get(2).getPic_url());
                             }
-                            if (item.getPic_url().size()==4){
-                                helper.setImageByUrl(R.id.iv_1,item.getPic_url().get(0).getPic_url());
-                                helper.setImageByUrl(R.id.iv_2,item.getPic_url().get(1).getPic_url());
-                                helper.setImageByUrl(R.id.iv_3,item.getPic_url().get(2).getPic_url());
-                                helper.setImageByUrl(R.id.iv_4,item.getPic_url().get(3).getPic_url());
+                            if (mItem.getPic_url().size()==4){
+                                mHelper.setImageByUrl(R.id.iv_1,mItem.getPic_url().get(0).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_2,mItem.getPic_url().get(1).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_3,mItem.getPic_url().get(2).getPic_url());
+                                mHelper.setImageByUrl(R.id.iv_4,mItem.getPic_url().get(3).getPic_url());
                             }
-                            final ViewHolder mHelper=helper;
-                            if (item.getRepair_status()==0){
-                                helper.setTextColor(R.id.tv_button,0xffffffff);
-                                helper.setText(R.id.tv_button,"受理");
 
-                                helper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
+                            if (mItem.getRepair_status()==0){
+                                mHelper.setTextColor(R.id.tv_button,0xffffffff);
+                                mHelper.setText(R.id.tv_button,"受理");
+                                mHelper.setBackgroundResource(R.id.tv_button,R.drawable.b_d_btn_dadianhua);
+                                final int repairId=mItem.getRepair_id();
+                                mHelper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         String url=URL.REPAIRUPDATE
                                                 +"repair_status="+1
-                                                +"&repair_id="+item.getRepair_id();
+                                                +"&repair_id="+repairId;
 
                                         RequestCenter.all(url, RepairUpdate.class , new DisposeDataListener() {
                                             @Override
@@ -116,12 +121,14 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
                                                     mHelper.setBackgroundResource(R.id.tv_button,R.drawable.a_b_a_btn_fasong);
                                                     mHelper.setTextColor(R.id.tv_button,0xff297aff);
                                                     mHelper.setText(R.id.tv_button,"维修中");
+                                                    mItem.setRepair_status(1);
+                                                    final int repairId=mItem.getRepair_id();
                                                     mHelper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
                                                         @Override
                                                         public void onClick(View view) {
                                                             String url=URL.REPAIRUPDATE
                                                                     +"repair_status="+2
-                                                                    +"&repair_id="+item.getRepair_id();
+                                                                    +"&repair_id="+repairId;
                                                             RequestCenter.all(url, RepairUpdate.class , new DisposeDataListener() {
                                                                 @Override
                                                                 public void onSuccess(Object responseObj) {
@@ -130,6 +137,7 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
                                                                         mHelper.setBackgroundResource(R.id.tv_button,R.drawable.conners_5dp_f1f1f1);
                                                                         mHelper.setTextColor(R.id.tv_button,0xffada8a8);
                                                                         mHelper.setText(R.id.tv_button,"维修成功");
+                                                                        mItem.setRepair_status(2);
                                                                     }
 
                                                                 }
@@ -154,16 +162,17 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
                                 });
 
                             }
-                            if (item.getRepair_status()==1){
-                                helper.setBackgroundResource(R.id.tv_button,R.drawable.a_b_a_btn_fasong);
-                                helper.setText(R.id.tv_button,"维修中");
-                                helper.setTextColor(R.id.tv_button,0xff297aff);
-                                helper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
+                            if (mItem.getRepair_status()==1){
+                                mHelper.setBackgroundResource(R.id.tv_button,R.drawable.a_b_a_btn_fasong);
+                                mHelper.setText(R.id.tv_button,"维修中");
+                                mHelper.setTextColor(R.id.tv_button,0xff297aff);
+                                final int repairId=mItem.getRepair_id();
+                                mHelper.setOnClickListener(R.id.tv_button, new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
                                         String url=URL.REPAIRUPDATE
                                                 +"repair_status="+2
-                                                +"&repair_id="+item.getRepair_id();
+                                                +"&repair_id="+repairId;
                                         RequestCenter.all(url, RepairUpdate.class , new DisposeDataListener() {
                                             @Override
                                             public void onSuccess(Object responseObj) {
@@ -173,6 +182,7 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
                                                     mHelper.setTextColor(R.id.tv_button,0xffada8a8);
                                                     mHelper.setText(R.id.tv_button,"维修成功");
                                                     mHelper.setOnClickListener(R.id.tv_button,null);
+                                                    mItem.setRepair_status(2);
                                                 }
 
                                             }
@@ -187,10 +197,10 @@ public class WeiXiuFuWuActivity extends MySwipeBackActivity{
 
                             }
                             if (item.getRepair_status()==2) {
-                                helper.setBackgroundResource(R.id.tv_button,R.drawable.conners_5dp_f1f1f1);
-                                helper.setTextColor(R.id.tv_button,0xffada8a8);
-                                helper.setText(R.id.tv_button,"维修成功");
-                                helper.setOnClickListener(R.id.tv_button,null);
+                                mHelper.setBackgroundResource(R.id.tv_button,R.drawable.conners_5dp_f1f1f1);
+                                mHelper.setTextColor(R.id.tv_button,0xffada8a8);
+                                mHelper.setText(R.id.tv_button,"维修成功");
+                                mHelper.setOnClickListener(R.id.tv_button,null);
                             }
 
 

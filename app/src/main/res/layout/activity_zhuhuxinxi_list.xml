@@ -53,16 +53,16 @@
 
         </RelativeLayout>
     </RelativeLayout>
-    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
-    <ListView
-        android:id="@+id/lv_zhuhuxinxi"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<ListView-->
+        <!--android:id="@+id/lv_zhuhuxinxi"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-    </ListView>
-    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    <!--</ListView>-->
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 </LinearLayout>

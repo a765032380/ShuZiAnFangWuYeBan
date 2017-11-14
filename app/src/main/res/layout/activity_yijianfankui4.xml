@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="报修服务"
+            android:text="意见反馈"
             android:textColor="#323232"
             android:textSize="17sp" />
 
