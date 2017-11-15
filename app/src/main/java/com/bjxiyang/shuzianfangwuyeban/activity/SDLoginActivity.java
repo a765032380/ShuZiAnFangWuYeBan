@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +53,7 @@ public class SDLoginActivity extends AppCompatActivity {
     private static final String WEIXIN_STATE="wechat_sdk_login";
     private TextView tv_yonghuxieyi;
     private LinearLayout il_deletephone;
+    private TextView tv_wangjimima;
 
     public static SDLoginActivity sdLoginActivity;
 
@@ -160,6 +162,15 @@ public class SDLoginActivity extends AppCompatActivity {
 
     private void initView()
     {
+        tv_wangjimima=findViewById(R.id.tv_wangjimima);
+        tv_wangjimima.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:4000895558"));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
         input_user_name_login_editview = (EditText) findViewById(R.id.et_login_username);
         wx= (Button) findViewById(R.id.bt_weixindenglu);
         wx.setOnClickListener(new View.OnClickListener() {
@@ -287,18 +298,22 @@ public class SDLoginActivity extends AppCompatActivity {
                 RequestCenter.login(url, Login.class, new DisposeDataListener() {
                     @Override
                     public void onSuccess(Object responseObj) {
+                        DialogUntil.closeLoadingDialog();
                         Login login= (Login) responseObj;
                         if (login.getCode()==CodeUtil.SUCCESS){
                             setData(login);
                             Intent intent=new Intent(SDLoginActivity.this,MainActivity.class);
                             startActivity(intent);
+                            finish();
+                        }else {
+                            MyUntil.show(SDLoginActivity.this,login.getMsg());
                         }
 
                     }
 
                     @Override
                     public void onFailure(Object reasonObj) {
-
+                        DialogUntil.closeLoadingDialog();
                     }
                 });
 
@@ -449,16 +464,6 @@ public class SDLoginActivity extends AppCompatActivity {
 ////        SPManager.getInstance().putString("age", users.getObj().getAge());
 ////        SPManager.getInstance().putString("ownerId",users.getObj().getOwnerId());
 //    }
-
-
-
-    //得到设备码
-    private void getIMEI(){
-        TelephonyManager telephonyManager=(TelephonyManager)
-                this.getSystemService(Context.TELEPHONY_SERVICE);
-        APP_ID.APP_ID =telephonyManager.getDeviceId();
-
-    }
     public void getQuanxian() {
         if (Build.VERSION.SDK_INT >= 23) {
             if(ContextCompat.checkSelfPermission(this,

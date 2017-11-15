@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShuZiAnFangWuYeBan</string>
+    <string name="app_name">数字安防物业版</string>
     <!-- 检查更新组件string-->
     <string name="update_title">快下载更新体验一下吧</string>
     <string name="update_new_version">您有新版本</string>

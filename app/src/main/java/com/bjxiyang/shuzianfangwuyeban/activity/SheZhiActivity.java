@@ -47,6 +47,7 @@ public class SheZhiActivity extends MySwipeBackActivity implements View.OnClickL
     LinearLayout ll_setting_exit;
     @BindView(R.id.tv_setting_catch)
     TextView tv_setting_catch;
+    public static SheZhiActivity sheZhiActivity;
 
 
 
@@ -133,6 +134,9 @@ private void logOut(){
             SPManager.getInstance().remove("sex");
             SPManager.getInstance().remove("birthday");
             SPManager.getInstance().remove("headPhoneUrl");
+            MainActivity.appActivity.finish();
+            startActivity(SDLoginActivity.class);
+            finish();
 
         }
     });
@@ -157,6 +161,7 @@ private void logOut(){
     @Override
     protected void initUI() {
         ButterKnife.bind(this);
+        sheZhiActivity=this;
         try {
             tv_setting_catch.setText(DataCleanManager.getTotalCacheSize(this));
         } catch (Exception e) {

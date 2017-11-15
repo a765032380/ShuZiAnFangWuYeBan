@@ -61,6 +61,18 @@ public class GeRenFragment extends BaseFragment implements View.OnClickListener 
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        setData();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setData();
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_geren;
     }

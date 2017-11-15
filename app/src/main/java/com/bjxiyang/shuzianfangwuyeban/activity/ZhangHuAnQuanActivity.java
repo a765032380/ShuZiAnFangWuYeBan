@@ -25,6 +25,7 @@ public class ZhangHuAnQuanActivity extends MySwipeBackActivity implements View.O
     private static final String WEIXIN_APP_ID="wxfe7d0b3660506256";
     private static final String WEIXIN_SCOPE="snsapi_userinfo";
     private static final String WEIXIN_STATE="wechat_sdk_update";
+    public static ZhangHuAnQuanActivity zhangHuAnQuanActivity;
 
 
     @BindView(R.id.rl_safe_fanhui)
@@ -49,7 +50,7 @@ public class ZhangHuAnQuanActivity extends MySwipeBackActivity implements View.O
                 break;
             //修改手机号
             case R.id.ll_safe_xiugai:
-                startActivity(GengGaiPhoneActivity.class);
+                startActivity(XiuGaiMiMaActivity.class);
                 break;
             //绑定微信
             case R.id.ll_safe_wechat:
@@ -92,6 +93,7 @@ public class ZhangHuAnQuanActivity extends MySwipeBackActivity implements View.O
     @Override
     protected void initUI() {
         ButterKnife.bind(this);
+        zhangHuAnQuanActivity=this;
         setData();
     }
     private void setData(){

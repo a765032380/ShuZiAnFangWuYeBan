@@ -1,10 +1,11 @@
 package com.bjxiyang.shuzianfangwuyeban.bean;
 
 /**
- * Created by gll on 2017/11/14.
+ * Created by gll on 2017/11/15.
  */
 
-public class AddOrder {
+public class AddOrder2 {
+
 
     /**
      * code : 0

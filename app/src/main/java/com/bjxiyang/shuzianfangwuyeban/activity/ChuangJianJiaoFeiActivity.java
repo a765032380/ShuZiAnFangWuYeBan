@@ -20,6 +20,7 @@ import com.baisi.myapplication.okhttp.listener.DisposeDataListener;
 import com.bjxiyang.shuzianfangwuyeban.R;
 import com.bjxiyang.shuzianfangwuyeban.api.URL;
 import com.bjxiyang.shuzianfangwuyeban.bean.AddOrder;
+import com.bjxiyang.shuzianfangwuyeban.bean.AddOrder2;
 import com.bjxiyang.shuzianfangwuyeban.bean.FindCommunity;
 import com.bjxiyang.shuzianfangwuyeban.bean.SelectDoor;
 import com.bjxiyang.shuzianfangwuyeban.bean.SelectFloor;
@@ -129,12 +130,15 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
     private int floorId=-1;
     private int unitId=-1;
     private int doorId=-1;
-    private String mobilePhone;
-    private String rentMoney;
-    private String note;
-    private String takeTime;
-    private String realName;
+    private String mobilePhone="";
+    private String rentMoney="";
+    private String note="";
+    private String takeTime="";
+    private String realName="";
+    private String beizhu="";
     private WheelMain wheelMainDate;
+
+
     @OnClick({R.id.iv_chuangjianjiaofei_fanhui,
             R.id.ll_danweimianji,
             R.id.ll_louhao1,
@@ -154,6 +158,7 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
         switch (view.getId()){
             //返回
             case R.id.iv_chuangjianjiaofei_fanhui:
+                finish();
                 break;
                 //显示单位面积
             case R.id.ll_danweimianji:
@@ -201,9 +206,11 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
                 break;
                 //截止时间2
             case R.id.ll_jiezhishijiann:
+                showTime(tv_jiezhishijiann);
                 break;
                 //提交2
             case R.id.tv_tijiao:
+                tiJiao2();
                 break;
         }
 
@@ -216,9 +223,7 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
         view_louhao1.setVisibility(View.VISIBLE);
         view_danweimianji.setVisibility(View.INVISIBLE);
 
-
-
-
+        qingkong();
     }
     private void showDanWeiMianJi(){
         sc_danweimianji.setVisibility(View.GONE);
@@ -227,6 +232,7 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
         tv_louhao1.setTextColor(0xff909090);
         view_louhao1.setVisibility(View.INVISIBLE);
         view_danweimianji.setVisibility(View.VISIBLE);
+        qingkong();
     }
     private void showXiaoQu(){
         selectXiaoQu();
@@ -486,7 +492,21 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
             }
         });
     }
-    public  int getKey(Map<Integer,String> map,String value){
+    private void qingkong(){
+        communityId=-1;
+        nperId=-1;
+        floorId=-1;
+        unitId=-1;
+        doorId=-1;
+        mobilePhone="";
+        rentMoney="";
+        note="";
+        takeTime="";
+        realName="";
+        beizhu="";
+
+    }
+    private  int getKey(Map<Integer,String> map,String value){
         int  key = 0;
         //Map,HashMap并没有实现Iteratable接口.不能用于增强for循环.
         for(Integer getKey: map.keySet()){
@@ -500,7 +520,7 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
     private void showTime(TextView tv){
         showBottoPopupWindow(tv);
     }
-    public void showBottoPopupWindow(final TextView tv) {
+    private void showBottoPopupWindow(final TextView tv) {
         WindowManager manager = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
         Display defaultDisplay = manager.getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics();
@@ -566,23 +586,67 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
     private void tiJiao1(){
         rentMoney= String.valueOf(ed_louhao_money.getText());
         note= String.valueOf(et_louhao_beizhu.getText());
-        takeTime= String.valueOf(tv_louhao_time.getText());
-
-
+        takeTime= String.valueOf(tv_louhao_endtime.getText());
+        if (communityId==-1){showToast("请先选择小区");return;}
+        if (nperId==-1){showToast("请先选择期数");return;}
+        if (floorId==-1){showToast("请先选择楼号");return;}
+        if (unitId==-1){showToast("请先选择单元");return;}
+        if (doorId==-1){showToast("请先选择房号");return;}
+        if (rentMoney.equals("")){showToast("请先输入金额");return;}
+        if (note.equals("")){showToast("请先输入备注");return;}
+        if (takeTime.equals("")){showToast("请先选择缴费截止时间");return;}
         String url=URL.ADDORDER_ORDER
                 +"communityId="+communityId
                 +"&nperId="+nperId
                 +"&floorId="+floorId
                 +"&unitId="+unitId
                 +"&doorId="+doorId
-                +"&mobilePhone="
-                +"&rentMoney="
-                +"&note="
-                +"&takeTime="
-                +"&realName=";
+                +"&rentMoney="+rentMoney
+                +"&note="+note
+                +"&takeTime="+takeTime;
         RequestCenter.all(url, AddOrder.class, new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
+                AddOrder addOrder= (AddOrder) responseObj;
+                if (addOrder.getCode()==CodeUtil.SUCCESS){
+                    showToast("提交成功");
+                    qingkong();
+                    initDanWeiMianJi();
+                }else {
+                    showToast("提交失败");
+                }
+            }
+
+            @Override
+            public void onFailure(Object reasonObj) {
+
+            }
+        });
+    }
+    private void tiJiao2(){
+        rentMoney= String.valueOf(et_shezhijine.getText());
+        takeTime= String.valueOf(tv_jiezhishijiann.getText());
+        beizhu= String.valueOf(et_beizhu.getText());
+        if (communityId==-1){showToast("请先选择小区");return;}
+        if (rentMoney.equals("")){showToast("请先输入金额");return;}
+        if (beizhu.equals("")){showToast("请先输入备注");return;}
+        if (takeTime.equals("")){showToast("请先选择缴费截止时间");return;}
+        String url=URL.ADDSPACEORDER_ORDER
+                +"orderPrice="+rentMoney
+                +"&note="+beizhu
+                +"&takeTime="+takeTime
+                +"&communityId="+communityId;
+        RequestCenter.all(url, AddOrder2.class, new DisposeDataListener() {
+            @Override
+            public void onSuccess(Object responseObj) {
+                AddOrder2 addOrder2= (AddOrder2) responseObj;
+                if (addOrder2.getCode()==CodeUtil.SUCCESS){
+                    showToast("提交成功");
+                    qingkong();
+                    initLouHao();
+                }else {
+                    showToast("提交失败");
+                }
 
             }
 
@@ -592,9 +656,27 @@ public class ChuangJianJiaoFeiActivity extends MySwipeBackActivity implements Vi
             }
         });
     }
-
-
-
+    private void initLouHao(){
+        tv_xiaoqu.setText("请选择");
+        et_shezhijine.setText("");
+        et_shezhijine.setHint("请输入金额");
+        tv_jiezhishijiann.setText("请选择");
+        et_beizhu.setText("");
+        et_beizhu.setHint("请输入备注");
+    }
+    private void initDanWeiMianJi(){
+        tv_louhao_xiaoqu.setText("请选择");
+        tv_louhao_qiqu.setText("请选择");
+        tv_louhao_louhao.setText("请选择");
+        tv_louhao_danyuan.setText("请选择");
+        tv_louhao_fanghao.setText("请选择");
+        tv_louhao_time.setText("请选择");
+        tv_louhao_endtime.setText("请选择");
+        ed_louhao_money.setText("");
+        ed_louhao_money.setHint("请输入金额");
+        et_louhao_beizhu.setText("");
+        et_louhao_beizhu.setHint("请输入备注");
+    }
 
     @Override
     protected void initUI() {

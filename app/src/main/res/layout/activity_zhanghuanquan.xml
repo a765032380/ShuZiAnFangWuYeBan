@@ -64,11 +64,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="修改手机号"
+            android:text="修改密码"
             android:textColor="#323232"
             android:textSize="15sp" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/tv_safe_dinahua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

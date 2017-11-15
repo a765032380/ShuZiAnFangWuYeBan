@@ -130,7 +130,7 @@ public class GengGaiPhoneActivity extends MySwipeBackActivity implements View.On
 
     private void tiJiao() {
         String phone = String.valueOf(tv_changeTel_tijiao.getText());
-        MyXinXiActivity.update(2,phone,this);
+        MyXinXiActivity.myXinXiActivity.update(2,phone,this);
 
     }
 

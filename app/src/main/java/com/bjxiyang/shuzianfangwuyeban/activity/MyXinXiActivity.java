@@ -1,15 +1,24 @@
 package com.bjxiyang.shuzianfangwuyeban.activity;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
@@ -21,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baisi.imoocsdk.imageloader.ImageLoaderManager;
 import com.baisi.myapplication.okhttp.listener.DisposeDataListener;
@@ -37,6 +47,8 @@ import com.bjxiyang.shuzianfangwuyeban.select_date.JudgeDate;
 import com.bjxiyang.shuzianfangwuyeban.select_date.ScreenInfo;
 import com.bjxiyang.shuzianfangwuyeban.select_date.WheelMain;
 import com.bjxiyang.shuzianfangwuyeban.update.network.RequestCenter;
+import com.bjxiyang.shuzianfangwuyeban.util.CodeUtil;
+import com.bjxiyang.shuzianfangwuyeban.util.MyUntil;
 import com.bjxiyang.shuzianfangwuyeban.view.CircleImageView;
 
 import java.io.File;
@@ -54,6 +66,9 @@ import butterknife.OnClick;
  */
 
 public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClickListener{
+
+    private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    public static MyXinXiActivity myXinXiActivity;
 
     final int RESULT_LOAD_IMAGE=5;
     private File mFile;
@@ -95,6 +110,7 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
     @Override
     protected void initUI() {
         ButterKnife.bind(this);
+        myXinXiActivity=this;
         setData();
     }
 
@@ -113,9 +129,8 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
                 break;
             //头像
             case R.id.ll_gerenxinxi_touxiang:
-                Intent intent1 = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent1, RESULT_LOAD_IMAGE);
+                panduanQuanXian();
+
                 break;
             //昵称
             case R.id.ll_nickname:
@@ -300,14 +315,18 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
             LuBan.setOnGetImage(MyXinXiActivity.this, mFile, new LuBan.OnGetImage() {
                 @Override
                 public void getImage(File file) {
-                    map.put("pic", file);
-                    String url = URL.FILEUPLOAD
-                            +"propertyid="+SPManager.getInstance().getInt("PropertyId",0);
+                    map.put("file", file);
+                    String url = URL.FILEUPLOAD;
                     RequestCenter.uploadPictures2(url, map, new DisposeDataListener() {
                         @Override
                         public void onSuccess(Object responseObj) {
                             Image image= (Image) responseObj;
-//                            update(5,);
+                            if (image.getCode()== CodeUtil.SUCCESS){
+                                update(5,image.getObj(),MyXinXiActivity.this);
+                            }else {
+                                showToast(image.getMsg());
+                            }
+//
                         }
 
                         @Override
@@ -395,7 +414,7 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
             return null;
         }
     }
-    public static void update(final int type, final String context, final Activity activity){
+    public  void update(final int type, final String context, final Activity activity){
         RequestParams params=new RequestParams();
         params.put("propertyid",SPManager.getInstance().getInt("PropertyId",0)+"");
         switch (type){
@@ -450,28 +469,33 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
         RequestCenter.all(url, params, Update.class, new DisposeDataListener() {
             @Override
             public void onSuccess(Object responseObj) {
+                Update update= (Update) responseObj;
+                if (update.getCode()==CodeUtil.SUCCESS) {
 
-
-                switch (type){
-                    case 1:
-                        setData("leader",context);
-                        activity.finish();
-                        break;
-                    case 2:
-                        setData("tel",context);
-                        activity.finish();
-                        break;
-                    case 3:
-                        setData("sex",context);
-                        break;
-                    case 4:
-                        setData("birthday",context);
-                        break;
-                    case 5:
-                        setData("headPhoneUrl",context);
-                        break;
+                    switch (type) {
+                        case 1:
+                            setData("leader", context);
+                            activity.finish();
+                            break;
+                        case 2:
+                            setData("tel", context);
+                            activity.finish();
+                            break;
+                        case 3:
+                            setData("sex", context);
+                            break;
+                        case 4:
+                            setData("birthday", context);
+                            break;
+                        case 5:
+                            setData("headPhoneUrl", context);
+                            break;
+                    }
+                    MyUntil.show(activity,"更新成功");
+                    setData();
+                }else {
+                    MyUntil.show(activity,"更新失败");
                 }
-
 
             }
 
@@ -493,6 +517,101 @@ public class MyXinXiActivity extends MySwipeBackActivity implements View.OnClick
         SPManager.getInstance().putString(key,context);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+                 if (requestCode == 321) {
+                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                                         // 判断用户是否 点击了不再提醒。(检测该权限是否还可以申请)
+                                         boolean b = shouldShowRequestPermissionRationale(permissions[0]);
+                                         if (!b) {
+                                                 // 用户还是想用我的 APP 的
+                                                 // 提示用户去应用设置界面手动开启权限
+                                                 showDialogTipUserGoToAppSettting();
+                                             }
+                                     } else {
+                                     Intent intent1 = new Intent(Intent.ACTION_PICK,
+                                             MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                     startActivityForResult(intent1, RESULT_LOAD_IMAGE);
+                                     }
+                             }
+                     }
+             }
+    // 提示用户去应用设置界面手动开启权限
+    private void showDialogTipUserGoToAppSettting() {
+
+                 AlertDialog dialog = new AlertDialog.Builder(this)
+                         .setTitle("存储权限不可用")
+                         .setMessage("请在-应用设置-权限-中，允许支付宝使用存储权限来保存用户数据")
+                         .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                                         // 跳转到应用设置界面
+                                         goToAppSetting();
+                                     }
+                 })
+                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                     @Override
+                     public void onClick(DialogInterface dialog, int which) {
+                                         finish();
+                                     }
+                 }).setCancelable(false).show();
+             }
+    // 跳转到当前应用的设置界面
+    private void goToAppSetting() {
+         Intent intent = new Intent();
+         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+         Uri uri = Uri.fromParts("package", getPackageName(), null);
+         intent.setData(uri);
+
+         startActivityForResult(intent, 123);
+     }
+    private void panduanQuanXian(){
+         // 版本判断。当手机系统大于 23 时，才有必要去判断权限是否获取
+                  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                          // 检查该权限是否已经获取
+                          int i = ContextCompat.checkSelfPermission(this, permissions[0]);
+                          // 权限是否已经 授权 GRANTED---授权  DINIED---拒绝
+                          if (i != PackageManager.PERMISSION_GRANTED) {
+                                  // 如果没有授予该权限，就去提示用户请求
+                                  showDialogTipUserRequestPermission();
+                              }else {
+                              Intent intent1 = new Intent(Intent.ACTION_PICK,
+                                      MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                              startActivityForResult(intent1, RESULT_LOAD_IMAGE);
+                          }
+                      }else {
+                      Intent intent1 = new Intent(Intent.ACTION_PICK,
+                              MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                      startActivityForResult(intent1, RESULT_LOAD_IMAGE);
+                  }
+     }
+    // 提示用户该请求权限的弹出框
+    private void showDialogTipUserRequestPermission() {
+
+                 new AlertDialog.Builder(this)
+                         .setTitle("存储权限不可用")
+                         .setMessage("由于数字安防物业版需要获取存储空间，为你存储个人信息；\n否则，您将无法正常使用数字安防物业版")
+                         .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                                         startRequestPermission();
+                                     }
+                  })
+                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                                         finish();
+                                     }
+                  }).setCancelable(false).show();
+             }
+    // 开始提交请求权限
+    private void startRequestPermission() {
+                 ActivityCompat.requestPermissions(this, permissions, 321);
+             }
 
 
 }

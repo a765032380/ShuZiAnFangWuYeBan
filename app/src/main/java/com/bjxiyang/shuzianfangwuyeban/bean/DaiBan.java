@@ -84,7 +84,7 @@ public class DaiBan {
         private String repair_no;
         private String content;
         private String complaint_id;
-        private List<?> pic;
+        private List<String> pic;
 
         public String getCreate_time() {
             return create_time;
@@ -230,11 +230,11 @@ public class DaiBan {
             this.complaint_id = complaint_id;
         }
 
-        public List<?> getPic() {
+        public List<String> getPic() {
             return pic;
         }
 
-        public void setPic(List<?> pic) {
+        public void setPic(List<String> pic) {
             this.pic = pic;
         }
     }

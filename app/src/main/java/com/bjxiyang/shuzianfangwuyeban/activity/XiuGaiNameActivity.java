@@ -89,7 +89,7 @@ public class XiuGaiNameActivity extends MySwipeBackActivity implements View.OnCl
                 }
 //                setResult(RESULT_OK, mIntent);
 //                finish();
-                MyXinXiActivity.update(1,name,this);
+                MyXinXiActivity.myXinXiActivity.update(1,name,this);
 
 
 //                DialogUntil.showLoadingDialog(this,"正在提交",false);

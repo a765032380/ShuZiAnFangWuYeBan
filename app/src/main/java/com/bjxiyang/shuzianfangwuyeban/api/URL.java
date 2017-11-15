@@ -48,5 +48,13 @@ public class URL {
     public final static String SELEVCT_BACKLOG=URL+"propertyFunctions/backlog/select?";
     //根据房间添加物业费
     public final static String ADDORDER_ORDER=URL+"propertyFunctions/order/addOrder?";
+    //根据面积添加物业费
+    public final static String ADDSPACEORDER_ORDER=URL+"propertyFunctions/order/addSpaceOrder?";
+    //修改密码
+    public final static String CHANGE_PWD=URL+"appLogin/admin/changePwd?";
+    //物业费催收
+    public final static String ORDERHASTEN=URL+"propertyFunctions/order/orderHasten?";
+    //编辑反馈状态
+    public final static String KNOW=URL+"propertyFunctions/complaint/know?";
 
 }
